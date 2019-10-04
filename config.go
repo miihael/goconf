@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"reflect"
 	"strings"
@@ -17,7 +16,7 @@ var (
 
 // Config represents a configuration loader
 type Config struct {
-	optionLog  func(string)
+	OptionLog  func(string)
 	flagSet    *flag.FlagSet
 	fileLoader *fileLoader
 }
@@ -38,10 +37,10 @@ func New(name string, options ...func(*Config)) *Config {
 
 func (c *Config) log(msg string) {
 	msg = fmt.Sprintf("[goconf]: %s", msg)
-	if c.optionLog == nil {
-		log.Print(msg)
+	if c.OptionLog == nil {
+		fmt.Fprint(os.Stderr, msg)
 	} else {
-		c.optionLog(msg)
+		c.OptionLog(msg)
 	}
 }
 
