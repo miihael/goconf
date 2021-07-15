@@ -1,6 +1,11 @@
 package main
 
-import "github.com/timestee/goconf"
+import (
+	"fmt"
+	"os"
+
+	"github.com/miihael/goconf"
+)
 
 type testOptions struct {
 	goconf.AutoOptions
@@ -9,10 +14,13 @@ type testOptions struct {
 	LogLevel    int      `default:"3"`
 	BoolVar     bool     `default:"false"`
 	IntSlice    []int64  `cfg:"int_slice"`
+	FromEnv     string   `default:"undefined"`
 }
 
 func main() {
 	ops := &testOptions{}
+	os.Setenv("FROM_ENV", "zzz")
 	// conf_3 inherit from conf_1 and conf_2
 	goconf.MustResolve(ops, "conf_1.toml", "conf_1.json", "conf_3.toml")
+	fmt.Println(ops)
 }
