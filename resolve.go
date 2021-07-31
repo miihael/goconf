@@ -34,7 +34,7 @@ func innerResolve(options interface{}, flagSet *flag.FlagSet, cfg map[string]int
 
 	for i := 0; i < typ.NumField(); i++ {
 		field := typ.Field(i)
-		if !field.CanInterface() {
+		if field.PkgPath != "" {
 			Log(fmt.Sprintf("skip unexported field: %s", field.Name))
 			continue
 		}
