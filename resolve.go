@@ -96,6 +96,7 @@ func innerResolve(options interface{}, flagSet *flag.FlagSet, cfg map[string]int
 			coerced, err := coerce(v, fieldVal.Interface(), field.Tag.Get("arg"))
 			if err != nil {
 				Log(fmt.Sprintf("coerce fail: %v for %s (%+v) - %s", v, field.Name, fieldVal, err))
+				continue
 			}
 			fieldVal.Set(reflect.ValueOf(coerced))
 			if dstMap != nil {

@@ -265,7 +265,7 @@ func _coerce(v interface{}, opt interface{}, arg string, fs *flag.FlagSet, name 
 			return nil, err
 		}
 		if fs != nil {
-			return nil, fmt.Errorf("type not support []string")
+			return nil, fmt.Errorf("type not supported []string")
 		}
 		return cv, nil
 	case []float64:
@@ -274,7 +274,7 @@ func _coerce(v interface{}, opt interface{}, arg string, fs *flag.FlagSet, name 
 			return nil, err
 		}
 		if fs != nil {
-			return nil, fmt.Errorf("type not support []float64")
+			return nil, fmt.Errorf("type not supported []float64")
 		}
 		return cv, nil
 	case []int64:
@@ -283,7 +283,7 @@ func _coerce(v interface{}, opt interface{}, arg string, fs *flag.FlagSet, name 
 			return nil, err
 		}
 		if fs != nil {
-			return nil, fmt.Errorf("type not support []int64")
+			return nil, fmt.Errorf("type not supported []int64")
 		}
 		return cv, nil
 
